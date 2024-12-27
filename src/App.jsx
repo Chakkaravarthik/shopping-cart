@@ -5,15 +5,7 @@ function App() {
   const [data, setData] = useState([]);
   const [count, setCount] = useState(0);
 
-  const adData = {
-    title: "Shop In Style",
-    para: "Home Page Template"
-  };
-
-  const ad2Data = {
-    title: "",
-    para: "Copyright © Your Website 2023"
-  };
+  
 
   const handlesetcountinc = () => {
     setCount(count + 1);
@@ -43,8 +35,7 @@ function App() {
   return (
     <>
       <NavBar count={count} />
-      <BlackProductAd data={adData} />
-      <div id="shop-card">
+      <div id="shop-card" className='bg-secondary'>
         {data.map((product, index) => (
           <DisplayCard
             product={product}
@@ -54,7 +45,7 @@ function App() {
           />
         ))}
       </div>
-      <BlackProductAd data={ad2Data} />
+      
     </>
   );
 }
@@ -64,21 +55,16 @@ export default App;
 function NavBar({ count }) {
   return (
     <>
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+      <nav className="navbar navbar-expand-lg bg-dark ">
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">Navbar</a>
+          <a className="navbar-brand text-white" href="#">Navbar</a>
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav">
               <li className="nav-item" key="home">
-                <a className="nav-link" href="#">Home</a>
+                <a className="nav-link text-white" href="#">Home</a>
               </li>
               <li className="nav-item" key="about">
-                <a className="nav-link" href="#">About</a>
-              </li>
-              <li className="nav-item dropdown" key="shop">
-                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                  Shop
-                </a>
+                <a className="nav-link text-white" href="#">About</a>
               </li>
             </ul>
           </div>
@@ -105,7 +91,7 @@ function DisplayCard({ product, handlesetcountdec, handlesetcountinc }) {
   const [buttonstate, setbuttonstate] = useState(true);
 
   return (
-    <div className='card1'>
+    <div className='card1 bg-white'>
       <img src={product.image} className="cardimg card-img-top" alt={product.name} />
       <h5 className="card-title headfont">{product.title}</h5>
       <p>{product.price}</p>
