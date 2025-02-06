@@ -35,7 +35,7 @@ function App() {
   return (
     <>
       <NavBar count={count} />
-      <div id="shop-card" className='bg-secondary'>
+      <div id="shop-card" className='bg-white'>
         {data.map((product, index) => (
           <DisplayCard
             product={product}
@@ -45,6 +45,7 @@ function App() {
           />
         ))}
       </div>
+      <NavBar1 count={count} />
       
     </>
   );
@@ -57,7 +58,7 @@ function NavBar({ count }) {
     <>
       <nav className="navbar navbar-expand-lg bg-dark ">
         <div className="container-fluid">
-          <a className="navbar-brand text-white" href="#">Navbar</a>
+          <a className="navbar-brand text-white btn btn-danger">Instakart</a>
           <div className="collapse navbar-collapse" id="navbarNavDropdown">
             <ul className="navbar-nav">
               <li className="nav-item" key="home">
@@ -69,6 +70,25 @@ function NavBar({ count }) {
             </ul>
           </div>
           <button type="button" className="cart btn btn-light">Cart {count}</button>
+        </div>
+      </nav>
+    </>
+  );
+}
+
+
+function NavBar1() {
+  return (
+    <>
+      <nav className="navbar navbar-expand-lg bg-dark ">
+        <div className="container-fluid">
+          <div className="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul className="navbar-nav">
+              <li className="nav-item" key="home">
+                <a className="nav-link text-white" >Contact Us @ instakart@gmail.com</a>
+              </li>
+            </ul>
+          </div>
         </div>
       </nav>
     </>
@@ -91,10 +111,10 @@ function DisplayCard({ product, handlesetcountdec, handlesetcountinc }) {
   const [buttonstate, setbuttonstate] = useState(true);
 
   return (
-    <div className='card1 bg-white'>
-      <img src={product.image} className="cardimg card-img-top" alt={product.name} />
-      <h5 className="card-title headfont">{product.title}</h5>
-      <p>{product.price}</p>
+    <div className='card1 bg-white shadow-lg rounded'>
+      <img src={product.image} className ="cardimg card-img-top p-1" alt={product.name} style={{width:'100px', height:'100px'}}/>
+      <h5 className="card-title headfont p-3 fs-6 fw-bold text-center">{`Name : ${product.title}`}</h5>
+      <p className='fw-bold text-center fs-5 '>{`Rate : ${product.price}`}</p>
       {buttonstate ? (
         <button className="btn btn-primary" onClick={() => { setbuttonstate(!buttonstate); handlesetcountinc(); }}>
           Add To Cart
